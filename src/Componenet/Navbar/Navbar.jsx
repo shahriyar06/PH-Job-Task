@@ -1,34 +1,29 @@
-// import { useContext } from "react";
-import {Link, NavLink} from "react-router-dom";
-// import {  Link, NavLink, useLocation, useNavigate } from "react-router-dom";
-// import { AuthContext } from "../../Page/FirebaseProvider/FirebaseProvider";
-// import { BsPerson } from "react-icons/bs";
+import { useContext } from "react";
+import {  Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { BsPerson } from "react-icons/bs";
+import { AuthContext } from "../../Page/FirebaseProvider/FirebaseProvider";
 
 
 const Navbar = () => {
 
-    // const { signout, user } = useContext(AuthContext);
-    // const navigate = useNavigate()
-    // const location = useLocation()
-    // const from = location?.state || '/'
+    const { signout, user } = useContext(AuthContext);
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/'
 
-    // const handlesociallogout = logoutProvider => {
-    //     logoutProvider()
-    //         .then(result => {
-    //             // toast("Success register!");
-    //             if (result.user) {
-    //                 navigate(from)
-    //             }
-    //         })
-    // }
+    const handlesociallogout = logoutProvider => {
+        logoutProvider()
+            .then(result => {
+                // toast("Success register!");
+                if (result.user) {
+                    navigate(from)
+                }
+            })
+    }
 
     const Navbar = <>
         <li><NavLink to='/' className={({ isActive }) => isActive ? "border-[#34ffdd] border text-[#34ffdd]" : "text-[#131313]"}>Home</NavLink></li>
         <li><NavLink to='/product' className={({ isActive }) => isActive ? "border-[#34ffdd] border text-[#34ffdd]" : "text-[#131313]"}>Product</NavLink></li>
-        {/* {
-            user && <><li><NavLink to='/myjobs' className={({ isActive }) => isActive ? "border-[#34ffdd] border text-[#34ffdd]" : "text-[#131313]"}>My Jobs</NavLink></li>
-            <li><NavLink to='/appliedjob' className={({ isActive }) => isActive ? "border-[#34ffdd] border text-[#34ffdd]" : "text-[#131313]"}>Applied Job</NavLink></li> </>
-        } */}
     </>
     return (
         <div className="lg:w-11/12 mx-auto mt-3">
@@ -50,7 +45,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end flex item-center">
-                    {/* {
+                    {
                         user ?
                             <div className=" relative">
                                 <details className="dropdown dropdown-end">
@@ -80,9 +75,7 @@ const Navbar = () => {
                                     </ul>
                                 </details>
                             </div>
-                    } */}
-                    <Link to='/register' className="hover:text-[#34ffdd]">Register</Link>
-                    <Link to='/login' className=" hover:text-[#34ffdd]">Log In</Link>
+                    }
                 </div>
             </div>
         </div>

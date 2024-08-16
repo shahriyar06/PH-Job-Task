@@ -4,6 +4,7 @@ import { FaFacebook } from "react-icons/fa6";
 
 import { useLocation, useNavigate } from "react-router-dom";
 import { useContext } from "react";
+import { AuthContext } from "../../Page/FirebaseProvider/FirebaseProvider";
 
 const SocialLogin = () => {
 

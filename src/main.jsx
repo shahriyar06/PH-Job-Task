@@ -5,9 +5,12 @@ import {
   RouterProvider
 } from "react-router-dom";
 import router from './Router/Router.jsx';
+import FirebaseProvider from './Page/FirebaseProvider/FirebaseProvider.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <FirebaseProvider>
+      <RouterProvider router={router} />
+    </FirebaseProvider>
   </StrictMode>,
 )

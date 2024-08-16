@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
+import { AuthContext } from "../../Page/FirebaseProvider/FirebaseProvider";
 
 const Register = () => {
 
