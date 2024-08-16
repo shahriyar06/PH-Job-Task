@@ -1,6 +1,40 @@
-
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { FaEyeSlash, FaEye } from "react-icons/fa";
+import { useContext, useState } from "react";
+import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Login = () => {
+
+    const [showpassword, setshowpassword] = useState(false);
+    const [restriction, setrestriction] = useState('')
+    const { signin } = useContext(AuthContext);
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const navigate = useNavigate()
+    const location = useLocation()
+    const from = location?.state || '/'
+    const onSubmit = (data) => {
+        setrestriction('')
+        signin(data.email, data.password)
+            .then(result => {
+                if (result.user) {
+                    navigate(from)
+                    Swal.fire({
+                        position: "middle-center",
+                        icon: "success",
+                        title: "Login Successfully.",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                }
+            })
+            .catch((error) => {
+                setrestriction('Invalid email or password')
+                console.error(error)
+            });
+
+    }
     return (
         <div>
             <div className="hero min-h-screen">
@@ -49,7 +83,7 @@ const Login = () => {
                         </div>
                     </form>
                     <div className="mx-8 mb-5">
-                        {/* <Sociallogin></Sociallogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

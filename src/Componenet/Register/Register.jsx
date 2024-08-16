@@ -3,8 +3,8 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 // import { ToastContainer, toast } from 'react-toastify';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
-import { AuthContext } from "../../Page/FirebaseProvider/FirebaseProvider";
 import Swal from "sweetalert2";
+import SocialLogin from "../SocialLogin/SocialLogin";
 
 const Register = () => {
 
@@ -122,7 +122,7 @@ const Register = () => {
                         </div>
                     </form>
                     <div className="">
-                        {/* <Sociallogin></Sociallogin> */}
+                        <SocialLogin></SocialLogin>
                     </div>
                     <div>
                         <p className="text-sm mt-2 text-center mb-5">By registering, I accept Prakritik Shongis <span className="label-text-alt link link-hover text-[#60a5fa]">terms of use</span>.</p>
