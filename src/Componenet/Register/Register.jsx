@@ -1,7 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-// import { ToastContainer, toast } from 'react-toastify';
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import Swal from "sweetalert2";
 import SocialLogin from "../SocialLogin/SocialLogin";
