@@ -1,5 +1,4 @@
-// import Items from "../../Componenet/Items/Items";
-
+import Items from "../../Componenet/Items/Items";
 import { Helmet } from "react-helmet-async";
 
 
@@ -9,7 +8,7 @@ const Home = () => {
             <Helmet>
                 <title>Product Showcase </title>
             </Helmet>
-            {/* <Items></Items> */}
+            <Items></Items>
         </div>
     );
 };
