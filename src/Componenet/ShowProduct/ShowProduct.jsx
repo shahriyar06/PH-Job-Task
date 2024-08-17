@@ -6,7 +6,7 @@ const ShowProduct = ({product}) => {
         <div className="">
             <div className="bg-[#efeae3] rounded-3xl w-full">
                 <div className="card card-side flex flex-col md:flex-row">
-                    <figure className="md:pl-3 p-3"><img src={product.Product_Image} className="rounded-3xl  h-56 md:w-72" /></figure>
+                    <figure className="md:ml-4 md:w-80"><img src={product.Product_Image} className="rounded-3xl h-64 w-full" /></figure>
                     <div className="card-body">
                         <h2 className="text-2xl font-semibold">{product.Product_Name}</h2>
                         <h2 className="text-lg font-medium">{product.Description}</h2>
