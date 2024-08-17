@@ -21,7 +21,9 @@ const AllProduct = () => {
         setfilterBrand(e.target.value);
     }
     const handleCategory = (e) => {
+
         setfilterCategory(e.target.value);
+        
     }
 
     const [searchQuery, setSearchQuery] = useState("");
