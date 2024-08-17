@@ -8,20 +8,21 @@ const AllProduct = () => {
     const [filterBrand, setfilterBrand] = useState("");
     const [Pricerange, setPricerange] = useState("");
     const [filterCategory, setfilterCategory] = useState("");
+    const [Sorting, setSorting] = useState(1);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
     const [totalProducts, setTotalProducts] = useState(0);
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&Price=${Pricerange}&page=${currentPage}&limit=10`)
+        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&sorting=${Sorting}&Price=${Pricerange}&page=${currentPage}&limit=10`)
             .then(res => res.json())
             .then(data => {
                 setallproduct(data.products);
                 setTotalProducts(data.totalProducts);
                 setTotalPages(data.totalPages);
             });
-    }, [filterBrand, filterCategory, Pricerange, currentPage])
+    }, [filterBrand, filterCategory, Pricerange, currentPage, Sorting])
 
     const handlebrandName = (e) => {
         setfilterBrand(e.target.value);
@@ -36,6 +37,12 @@ const AllProduct = () => {
     const handlepricerange = (e) => {
 
         setPricerange(e.target.value);
+        setCurrentPage(1);
+
+    }
+    const handlesroting = (e) => {
+
+        setSorting(e.target.value);
         setCurrentPage(1);
 
     }
@@ -94,11 +101,11 @@ const AllProduct = () => {
                     </select>
                 </div>
                 <div>
-                    <select type="dropdown" name='jobcategory' className="px-3 w-full rounded-lg h-12 border-2 border-[#2d2c2ca7] bg-transparent placeholder-[#080808]">
+                    <select type="dropdown" name='jobcategory' className="px-3 w-full rounded-lg h-12 border-2 border-[#2d2c2ca7] bg-transparent placeholder-[#080808]" onChange={handlesroting}>
                         <option value="">Sorting</option>
-                        <option value="Low to High">Low to High</option>
-                        <option value="High to Low">High to Low</option>
-                        <option value="Newest first">Newest first</option>
+                        <option>Low to High</option>
+                        <option>High to Low</option>
+                        <option>Newest first</option>
                     </select>
                 </div>
             </div>
