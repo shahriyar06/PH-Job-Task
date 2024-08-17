@@ -6,16 +6,17 @@ import { IoSearch } from "react-icons/io5";
 const AllProduct = () => {
     const [allproduct, setallproduct] = useState([])
     const [filterBrand, setfilterBrand] = useState("");
+    const [Pricerange, setPricerange] = useState("");
     const [filterCategory, setfilterCategory] = useState("");
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}`)
+        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&Price=${Pricerange}`)
             .then(res => res.json())
             .then(data => {
                 setallproduct(data)
             });
-    }, [filterBrand, filterCategory])
+    }, [filterBrand, filterCategory, Pricerange])
 
     const handlebrandName = (e) => {
         setfilterBrand(e.target.value);
@@ -24,6 +25,11 @@ const AllProduct = () => {
 
         setfilterCategory(e.target.value);
         
+    }
+    const handlepricerange = (e) => {
+
+        setPricerange(e.target.value);
+
     }
 
     const [searchQuery, setSearchQuery] = useState("");
@@ -65,12 +71,12 @@ const AllProduct = () => {
                     </select>
                 </div>
                 <div>
-                    <select type="dropdown" name='jobcategory' className="px-3 w-full rounded-lg h-12 border-2 border-[#2d2c2ca7] bg-transparent placeholder-[#080808]">
-                        <option value="0-200">0-200 $</option>
-                        <option value="0-50">0-50 $</option>
-                        <option value="51-100">51-100 $</option>
-                        <option value="101-150">101-150 $</option>
-                        <option value="151-200">151-200 $</option>
+                    <select type="dropdown" name='Pricerange' className="px-3 w-full rounded-lg h-12 border-2 border-[#2d2c2ca7] bg-transparent placeholder-[#080808]" onChange={handlepricerange}>
+                        <option value="">0-200 </option>
+                        <option>0-50 </option>
+                        <option>51-100</option>
+                        <option>101-150 </option>
+                        <option>151-200 </option>
                     </select>
                 </div>
                 <div>
