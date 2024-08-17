@@ -8,27 +8,35 @@ const AllProduct = () => {
     const [filterBrand, setfilterBrand] = useState("");
     const [Pricerange, setPricerange] = useState("");
     const [filterCategory, setfilterCategory] = useState("");
+    const [currentPage, setCurrentPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(1);
+    const [totalProducts, setTotalProducts] = useState(0);
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&Price=${Pricerange}`)
+        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&Price=${Pricerange}&page=${currentPage}&limit=10`)
             .then(res => res.json())
             .then(data => {
-                setallproduct(data)
+                setallproduct(data.products);
+                setTotalProducts(data.totalProducts);
+                setTotalPages(data.totalPages);
             });
-    }, [filterBrand, filterCategory, Pricerange])
+    }, [filterBrand, filterCategory, Pricerange, currentPage])
 
     const handlebrandName = (e) => {
         setfilterBrand(e.target.value);
+        setCurrentPage(1);
     }
     const handleCategory = (e) => {
 
         setfilterCategory(e.target.value);
+        setCurrentPage(1);
         
     }
     const handlepricerange = (e) => {
 
         setPricerange(e.target.value);
+        setCurrentPage(1);
 
     }
 
@@ -37,6 +45,12 @@ const AllProduct = () => {
     const filteredProduct = allproduct.filter(product => {
         return product.Product_Name.toLowerCase().includes(searchQuery.toLowerCase())
     });
+
+    const handlePageChange = (newPage) => {
+        if (newPage > 0 && newPage <= totalPages) {
+            setCurrentPage(newPage);
+        }
+    };
 
     return (
         <>
@@ -92,6 +106,11 @@ const AllProduct = () => {
                 {
                     filteredProduct.map(product => <ShowProduct product={product} key={product._id}></ShowProduct>)
                 }
+            </div>
+            <div className="flex justify-center mt-6">
+                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage <= 1}>Previous</button>
+                <span className="mx-4">Page {currentPage} of {totalPages}</span>
+                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage >= totalPages}>Next</button>
             </div>
         </>
     );
