@@ -10,7 +10,7 @@ const ShowProduct = ({product}) => {
                     <div className="card-body">
                         <h2 className="text-2xl font-semibold">{product.Product_Name}</h2>
                         <h2 className="text-lg font-medium">{product.Description}</h2>
-                        <h1 className="text-lg">Price : {product.Price}</h1>
+                        <h1 className="text-lg">Price : {product.Price} $</h1>
                         <div className="flex justify-between text-lg">
                             <h1>{product.Category_Name}</h1>
                             <h2 className="flex items-center gap-1">{product.Ratings} <IoStarHalfSharp className="text-[#d3a873] text-xl" /></h2>
