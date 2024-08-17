@@ -15,7 +15,7 @@ const AllProduct = () => {
 
 
     useEffect(() => {
-        fetch(`http://localhost:5000/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&sorting=${Sorting}&Price=${Pricerange}&page=${currentPage}&limit=10`)
+        fetch(`https://job-task-server-drab.vercel.app/products?Brand_Name=${filterBrand}&Category_Name=${filterCategory}&sorting=${Sorting}&Price=${Pricerange}&page=${currentPage}&limit=10`)
             .then(res => res.json())
             .then(data => {
                 setallproduct(data.products);
@@ -114,10 +114,10 @@ const AllProduct = () => {
                     filteredProduct.map(product => <ShowProduct product={product} key={product._id}></ShowProduct>)
                 }
             </div>
-            <div className="flex justify-center mt-6">
-                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage <= 1}>Previous</button>
-                <span className="mx-4">Page {currentPage} of {totalPages}</span>
-                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage >= totalPages}>Next</button>
+            <div className="flex justify-center mt-6 items-center text-lg my-4">
+                <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage <= 1} className="btn btn-accent text-lg text-white ">Previous</button>
+                <span className="mx-4 text-blue-500">Page {currentPage} of {totalPages}</span>
+                <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage >= totalPages} className="btn btn-accent text-lg text-white ">Next</button>
             </div>
         </>
     );

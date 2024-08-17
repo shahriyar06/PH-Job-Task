@@ -6,11 +6,14 @@ import {
 } from "react-router-dom";
 import router from './Router/Router.jsx';
 import FirebaseProvider from './Page/FirebaseProvider/FirebaseProvider.jsx';
+import { HelmetProvider } from 'react-helmet-async';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <FirebaseProvider>
-      <RouterProvider router={router} />
-    </FirebaseProvider>
-  </StrictMode>,
+    <HelmetProvider>
+      <FirebaseProvider>
+        <RouterProvider router={router} />
+      </FirebaseProvider>
+    </HelmetProvider>
+  </StrictMode>
 )
